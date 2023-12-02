@@ -37,8 +37,11 @@ import com.example.composelesons.ui.theme.ComposeLesonsTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            ListItem("","")
+        setContent { Column {
+            ListItem("Ben Stiller","Actor")
+            ListItem("Ben Stiller","Actor")
+            ListItem("Ben Stiller","Actor")
+        }
         }
     }
 }
@@ -55,7 +58,9 @@ private fun ListItem(name: String, prof: String) {
         elevation = CardDefaults.cardElevation(8.dp)
     ) {
         Box() {
-            Row() {
+            Row(
+                verticalAlignment = Alignment.CenterVertically
+            ) {
                 Image(
                     painter = painterResource(id = R.drawable.ben_stiller),
                     contentDescription = "image",
@@ -65,9 +70,9 @@ private fun ListItem(name: String, prof: String) {
                         .size(64.dp)
                         .clip(CircleShape)
                     )
-                Column {
-                    Text(text = "Wow")
-                    Text(text = "Wow")
+                Column(modifier = Modifier.padding(start = 16.dp)){
+                    Text(text = name)
+                    Text(text = prof)
                 }
 
             }
